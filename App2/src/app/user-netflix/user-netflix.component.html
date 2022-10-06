@@ -1,0 +1,174 @@
+<p>user-netflix works!</p>
+
+
+<div>
+        <div class="dt-cuenta-netflix" *ngFor="let userAccount of usersNeflix">
+            <h3 class="email-cuenta-user">{{userAccount.email_account}} <input type="submit" (click)="formUserNetflix(userAccount.id)" value="Nuevo"></h3>
+            <table  *ngFor="let userAccountNetflix of userAccount.accountusernetflix" class="table table-dark table-striped">
+                <tr>
+                  <th>#</th>
+                  <th>Usuario</th>
+                  <th>Pin</th>
+                  <th>Estado</th>
+                </tr>
+
+                <tr class="tr_datos_users">
+                    <td>{{userAccountNetflix.id}}</td>
+                    <td>{{userAccountNetflix.user_netflix}}</td>
+                    <td>{{userAccountNetflix.pin_user_netflix}}</td>
+                    <td><img src="Punto_rojo.png" alt=""></td>
+                    <td><button type="button" (click)="deleteUser(userAccountNetflix.id)" class="btn btn-danger">Eliminar</button>
+                        <button type="button" (click)="editar_user(userAccountNetflix.id)" class="btn btn-warning">Editar</button>
+                    </td>
+              </table>
+        </div>
+</div>
+
+
+<div *ngIf="formUser == true">
+    <form action=""  #FormularioNuevosuerNetflix="ngForm" (ngSubmit)="guardarUsuarioNetflix(FormularioNuevosuerNetflix, idcuentaNetflixUser)" >
+        <div class="col-sm-4 ">
+            <input type="text" class="form-control"  [(ngModel)]="Usersneflix.user_netflix" placeholder="User" name="user_netflix">
+        </div>
+        <div class="col-sm-4 ">
+            <input type="text" class="form-control"  [(ngModel)]="Usersneflix.pin_user_netflix" placeholder="User" name="pin_user_netflix">
+        </div>
+
+
+        <div *ngIf="editar == false">
+            <input type="submit" class="btn btn-success"  value="Enviar">
+        </div>
+
+        <div *ngIf="editar == true">
+            <input type="submit" (click)="updateUSer(Usersneflix.id, FormularioNuevosuerNetflix)" class="btn btn-warning"  value="Editar">
+        </div>
+        
+    </form>
+</div>
+
+
+
+<!-- <div class="form">
+
+    <form action=""  #FormularioNuevosuerNetflix="ngForm"  >
+        <div class="col-sm-4 ">
+            <input type="text" class="form-control"  [(ngModel)]="Usersneflix.user_netflix" placeholder="User" name="user_netflix">
+        </div>
+        <div class="col-sm-4 ">
+            <input type="text" class="form-control"  [(ngModel)]="Usersneflix.pin_user_netflix" placeholder="User" name="pin_user_netflix">
+        </div>
+       
+        <div *ngIf="editar == false">
+            <input type="submit" class="btn btn-success"  value="Enviar">
+            </div>
+    
+            <div *ngIf="editar == true">
+              <input type="button" #editar  (click)="updateUSer(Usersneflix.id)" class="btn btn-warning" value="Editar">
+              </div>
+    </form>
+
+</div>
+ -->
+
+<!-- <div *ngFor="let userAccount of usersNeflix">
+    <p class="p_cuenta" >{{userAccount.email_account}}</p>
+    
+    <div *ngFor="let userAccountNetflix of userAccount.accountusernetflix">
+        <p>{{userAccountNetflix.id}}</p>
+        <p>{{userAccountNetflix.user_netflix}}</p>
+        <p>{{userAccountNetflix.pin_user_netflix}}</p>
+        <p>{{userAccountNetflix.disponibilidad}}</p>
+        <button type="button" (click)="deleteUser(userAccountNetflix.id)" class="btn btn-danger">Left</button>
+        <button type="button" (click)="editar_user(userAccountNetflix.id)" class="btn btn-danger">Left</button>
+        
+         <div *ngIf="editar == false">
+            <input type="submit" class="btn btn-success"  value="Enviar">
+        </div>
+
+        <div *ngIf="editar == true">
+            <input type="submit" (click)="updateUSer(Usersneflix.id, FormularioNuevosuerNetflix)" class="btn btn-warning"  value="Editar">
+        </div>
+            
+<p>{{userAccountNetflix.disponibilidad}}</p>
+    </div>
+</div>  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="Pin" aria-label="State">
+                </div>
+ <div class="col-sm-3">
+                <button type="button" (click)="UpdateUsuarioNetflix(usernetflix.id, usernetflix.user_netflix, usernetflix.pin_user_netflix)"  class="btn btn-warning">Editar</button>
+                    
+                </div>
+[ngModel]="Usersneflix.user_netflix"
+value="{{usernetflix.user_netflix}}"
+                <div class="col-sm-2">
+                    <p>Estado</p>
+                </div>
+value="{{usernetflix.pin_user_netflix}}"
+                 <div class="btn-group col-sm-2" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-danger">Left</button>
+                    <button type="button" class="btn btn-warning">Middle</button>
+                    <button type="button" class="btn btn-success">Right</button>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Nuevo Usuario <p>{{userAccount.id}}</p>
+      </button>
+
+                    *ngFor="let direccion of formGroup.controls['direcciones'].controls; let i = index"
+                </div> --> 
+
+
+
+               
+                

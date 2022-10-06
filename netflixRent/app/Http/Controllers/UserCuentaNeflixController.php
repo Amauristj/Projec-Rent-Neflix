@@ -17,12 +17,13 @@ class UserCuentaNeflixController extends Controller
      */
     public function store(Request $request, $user_id, $cuenta_neflix_id)
     {
+
         $json = $request->json;
         $json = json_decode($json, true);
-
+      
         $validate = Validator::make($json, [
-            'user_neflix' => 'required',
-            'pin_user_neflix' => 'required'
+            'user_netflix' => 'required',
+            'pin_user_netflix' => 'required'
         ]);
 
         if ($validate->fails()) {
@@ -36,9 +37,9 @@ class UserCuentaNeflixController extends Controller
 
             $userCuentaNeflix->user_id = $user_id;
             $userCuentaNeflix->cuenta_netflix_id = $cuenta_neflix_id;
-            $userCuentaNeflix->user_netflix = $json['user_neflix'];
-            $userCuentaNeflix->pin_user_netflix = $json['pin_user_neflix'];
-            $userCuentaNeflix->disponibilidad = 0;
+            $userCuentaNeflix->user_netflix = $json['user_netflix'];
+            $userCuentaNeflix->pin_user_netflix = $json['pin_user_netflix'];
+            $userCuentaNeflix->disponibilidad = 1;
 
            
 
@@ -69,14 +70,16 @@ class UserCuentaNeflixController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $user_id, $cuenta_netflix_id)
+    public function update(Request $request, $id)
     {
         $json = $request->json;
         $json = json_decode($json, true);
 
+       
+       
         $validate = Validator::make($json, [
-            'user_neflix' => 'required',
-            'pin_user_neflix' => 'required'
+            'user_netflix' => 'required',
+            'pin_user_netflix' => 'required'
         ]);
 
         if ($validate->fails()) {
@@ -86,13 +89,13 @@ class UserCuentaNeflixController extends Controller
                 'massage' => 'Error al Procesar los Datos'
             ];
         }else {
-            $userCuentaNeflix = UserCuentaNeflix::where('id','=',$id)
-                                                ->where('user_id','=',$user_id)
-                                                ->where('cuenta_netflix_id','=',$cuenta_netflix_id)
-                                                ->first();
+            $userNeflix = $json['user_netflix'];
+            $pin_user = $json['pin_user_netflix'];
 
-            $userCuentaNeflix->user_netflix = $json['user_neflix'];
-            $userCuentaNeflix->pin_user_netflix = $json['pin_user_neflix'];
+            $userCuentaNeflix = UserCuentaNeflix::where('id','=',$id)
+                                                ->first();
+            $userCuentaNeflix->user_netflix = $userNeflix;
+            $userCuentaNeflix->pin_user_netflix = $pin_user;
            
 
             if ($userCuentaNeflix->save()) {
@@ -100,7 +103,7 @@ class UserCuentaNeflixController extends Controller
                 $data = [
                     'statu' => 'success',
                     'code' => 200,
-                    'massage' => 'Usuario de Neflix Actualizado Correctamente'
+                    'massage' => $pin_user
                 ];
             }else {
 
@@ -121,12 +124,10 @@ class UserCuentaNeflixController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $user_id, $cuenta_netflix_id)
+    public function destroy($id)
     {
 
         $userCuentaNeflix = UserCuentaNeflix::where('id','=',$id)
-                                            ->where('user_id','=',$user_id)
-                                            ->where('cuenta_netflix_id','=',$cuenta_netflix_id)
                                             ->first();
 
         if ($userCuentaNeflix->delete()) {
@@ -152,15 +153,17 @@ class UserCuentaNeflixController extends Controller
         $userCuentaNeflix = UserCuentaNeflix::where('id','=',$id)
                                             ->first();
         
-        $userCuentaNeflix->disponibilidad = 1;
+        $userCuentaNeflix->disponibilidad = 0;
         $userCuentaNeflix->save();
     }
 
-    public function GetUserNeflixbyAccount($account_id)
+    public static function GetUserNeflixbyAccount($account_id)
     {
-        $userCuentaNeflix = UserCuentaNeflix::where('cuenta_netflix_id','=',$account_id)
-                                            ->where('disponibilidad','=',0)->get();
         
+        $userCuentaNeflix = UserCuentaNeflix::where('cuenta_netflix_id','=',$account_id)
+                                            ->where('disponibilidad','=',1)->get();
+
+         
         $data = [
             'statu' => 'success',
             'code' => 200,
@@ -168,7 +171,28 @@ class UserCuentaNeflixController extends Controller
         ];
 
         return $data;
-        die();
+    }
 
+    public function edit($id)
+    {
+        $userCuentaNeflix = UserCuentaNeflix::where('id','=',$id)
+                                                    ->first();
+                                
+        if ($userCuentaNeflix) {
+
+            $data = [
+                'statu' => 'success',
+                'code' => 200,
+                'massage' => $userCuentaNeflix
+            ];
+        }else {
+            $data = [
+                'statu' => 'Error',
+                'code' => 400,
+                'massage' => 'La Usuario que esta buscando no existe'
+            ];
+        }
+
+        return $data;
     }
 }

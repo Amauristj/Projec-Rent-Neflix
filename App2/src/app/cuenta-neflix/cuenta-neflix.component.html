@@ -1,0 +1,58 @@
+
+<div class="row no-gutters border border-2 rounded container-3">
+  <div class="col-4 col-sm-6 col-md-8 lado1 cuarpo_principal">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col" >#</th>
+          <th scope="col" >Email</th>
+          <th scope="col" >Password</th>
+          <th scope="col" >Disponibilidad</th>
+          <th scope="col" >Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="cuerpo">
+        <tr *ngFor="let user of cuentasNeflix">
+          <th scope="row">{{user.id}}</th>
+          <td>{{user.email_account}}</td>
+          <td>{{user.password_account}}</td>
+          <td>{{user.disponibilidad}}</td>
+          <td class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" (click)="editar_cuenta(user.id)" type="submit" class="btn btn-warning btn-left">Edit</button>
+            <button type="button" (click)="eliminarcuenta(user.id)" type="submit" class="btn btn-danger btn-rigth">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="col-6 col-md-4">
+    
+    <form action="" class="form form-cuenta"  #FormularioNuevaCuentaNetflix="ngForm" (ngSubmit)="registrarCuentaNetflix(FormularioNuevaCuentaNetflix)">
+
+      <div class="titulo">
+        <p>Nueva Cuenta</p>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="text" class="form-control" [(ngModel)]="DatosnewCuenta.email_account" name="email_account">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Password</label>
+        <input type="text" class="form-control" [(ngModel)]="DatosnewCuenta.password_account" name="password_account">
+
+      </div>
+      <div *ngIf="editar == false">
+        <input type="submit" class="btn btn-success"  value="Enviar">
+        </div>
+
+        <div *ngIf="editar == true">
+          <input type="button" #editar (click)="update(DatosnewCuenta.id, FormularioNuevaCuentaNetflix)" class="btn btn-warning" value="Editar">
+          </div>
+      
+     
+    </form>
+
+</div>
+

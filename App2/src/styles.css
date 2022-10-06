@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+.buton-agregar{
+    margin: 5px;
+    padding: 2px;
+}
+*{
+ margin: 0;
+ padding: 0;
+}
+
+
+.btn-rigth{
+    left: 5px;
+}
+.ponerbordes{
+    border: 1px solid black;
+    
+}
+.form-cuenta{
+    margin: 20px;
+}
+
+.form-cuenta .titulo{
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 29px;
+}
+.lado1{
+    border-right: 2px solid gray;
+    padding: 0px !important;
+}
+.cuarpo_principal{
+    max-height: 100%;
+    overflow: auto;
+    display:inline-block;
+}
+
+.cuerpo {
+    overflow: scroll;
+}
+.container2{
+    border: 2px solid black !important;
+    margin-top: 32px;
+    border-radius: 1%;
+    
+    overflow: hidden;
+
+}
+
+.container-3{
+    margin: 0px !important;
+    height: 660px;
+    
+}
+
+.p_cuenta{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    font-style: oblique;
+    padding-left: 28px;
+}
+
+.form-user{
+    margin-left: 55px;
+}
+
+.col-espacios{
+    margin-bottom: 9px;
+}
+
+
+/* - pagina  de inicio- */
+
+.formRentUser{
+    border: 2px solid black;
+    width: 25%;
+    float: right;
+}
+.separar_input{
+    margin-bottom: 15px;
+}
+.fromDatos{
+    padding: 10px;
+}
+.imagen-1{
+    border: 2px solid black;
+    width: 947px;
+    overflow: hidden;
+    display: inline-block;
+}
+.imagen-1 img{
+width: 100%;
+}
+
+/* tabla usuarios */
+
+.dt-cuenta-netflix{
+    
+    width: 27%;
+    overflow: hidden;
+    padding-right: 39px;;
+}
+.email-cuenta-user{
+    font-family: 'Comfortaa', cursive;
+    font-size: 22px;
+    margin-left: 16px;
+    font-size: 22px;
+    margin-left: 16px;
+    font-weight: bold;
+}
+.table-users{
+ 
+    margin-left: 37px;
+}
+
+.table-users .tr_datos_users td img{
+    width: 27px;
+    margin-left: 14px;
+}

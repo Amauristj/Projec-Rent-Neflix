@@ -1,0 +1,28 @@
+<p>index-web works! ll</p>
+
+
+<div class="imagen-1">
+    <img src="https://www.profesionalreview.com/wp-content/uploads/2015/11/netflix-1280x720.png" alt="">
+</div>
+
+<div class="formRentUser">
+    <form class ="fromDatos" action="" #FormularioRentAccount="ngForm"  (ngSubmit)="RentAccountAndUser(FormularioRentAccount)">
+        <div class="input-group flex-nowrap separar_input">
+            <input type="text" class="form-control" [(ngModel)]="RentAccountUser.email_client" placeholder="Email" name="email_user" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+          </div>
+
+        <select name="" id="" class="form-select separar_input" [(ngModel)]="RentAccountUser.cuenta_netflix_id" name="idaccountNeflix" (change)="GetUserON($event)">
+            <option *ngFor="let AccountNetflix of AccountNeflix" value={{AccountNetflix.id}}>
+                {{AccountNetflix.email_account}}
+            </option>
+        </select>
+
+        <select name="" id="" class="form-select separar_input" [(ngModel)]="RentAccountUser.user_account_neflix_id" name="idaccountuserNeflix">
+            <option *ngFor="let AccounUsertNetflix of AccountUserNeflix" value={{AccounUsertNetflix.id}}>
+                {{AccounUsertNetflix.user_netflix}}
+            </option>
+        </select>
+
+        <input type="submit" class="btn btn-success"  value="Enviar">
+    </form>
+</div>
